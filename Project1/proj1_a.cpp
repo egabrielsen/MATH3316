@@ -8,7 +8,8 @@ void computeF(Matrix &a);
 
 int main() {
 	Matrix z = Linspace(-3.0, 3.0, 601, 1);
-	double p = nest(z, 2);
+	z.Write("z.txt");
+	double p4 = nest(z, 4);
 	computeF(z);
 	return 0;
 }
