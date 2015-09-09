@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 #include "matrix_class/matrix.cpp"
 #include "nest.cpp"
 
 using namespace std;
-void computeF(Matrix &z);
 double factorial(double x, double result);
 
 int main() {
@@ -23,36 +23,54 @@ int main() {
 	Matrix p12coeff(13, 1, p12data);
 
 	// -- Matrix for polynomials, initialized to 0
+	Matrix f(601, 1);
 	Matrix p4(601, 1);
 	Matrix p8(601, 1);
 	Matrix p12(601, 1);
+	Matrix err4(601, 1);
+	Matrix err8(601, 1);
+	Matrix err12(601, 1);
 
-	// -- Creating p4, p8, and p12 matrices
+	//-- Creating cos(x)
+	for(int i = 0; i < z.Size(); i++) {
+		f(i) = cos(z(i));
+	}
+	f.Write("f.txt");
+
+	// -- Creating p4
 	for(int i = 0; i < z.Size(); i++) {
 		p4(i) = nest(p4coeff, z(i));
 	}
 	p4.Write("p4.txt");
 
+	// -- Creating p8
 	for(int i = 0; i < z.Size(); i++) {
 		p8(i) = nest(p8coeff, z(i));
 	}
 	p8.Write("p8.txt");
 
+	// -- Creating p12
 	for(int i = 0; i < z.Size(); i++) {
 		p12(i) = nest(p12coeff, z(i));
 	}
 	p12.Write("p12.txt");
-	computeF(z);
+
+	for(int i = 0; i < f.Size(); i++) {
+		err4(i) = abs(f(i) - p4(i));
+	}
+	err4.Write("err4.txt");
+
+	for(int i = 0; i < f.Size(); i++) {
+		err8(i) = abs(f(i) - p8(i));
+	}
+	err8.Write("err8.txt");
+
+	for(int i = 0; i < f.Size(); i++) {
+		err12(i) = abs(f(i) - p12(i));
+	}
+	err12.Write("err12.txt");
 
 	return 0;
-}
-
-void computeF(Matrix &z) {
-	Matrix f(601, 1);
-	for(int i = 0; i < f.Size(); i++) {
-		f(i) = cos(z(i));
-	}
-	f.Write("f.txt");
 }
 
 double factorial(double x, double result = 1) {
