@@ -13,14 +13,14 @@ int main() {
 	z.Write("z.txt");
 
 	// -- Coefficients
-	double p4data[] = {1, (-1/factorial(2, 1)), (1/factorial(4, 1))};
-	double p8data[] = {(1/factorial(1, 1)), (-1/factorial(2, 1)), (1/factorial(4, 1)), (-1/factorial(6, 1)), (1/factorial(8, 1))};
-	double p12data[] = {(1/factorial(1, 1)), (-1/factorial(2, 1)), (1/factorial(4, 1)), (-1/factorial(6, 1)), (1/factorial(8, 1)), (-1/factorial(10, 1)), (1/factorial(12, 1))};
+	double p4data[] = {1, 0, (-1/factorial(2, 1)), 0, (1/factorial(4, 1))};
+	double p8data[] = {1, 0, (-1/factorial(2, 1)), 0, (1/factorial(4, 1)), 0, (-1/factorial(6, 1)), 0, (1/factorial(8, 1))};
+	double p12data[] = {1, 0, (-1/factorial(2, 1)), 0, (1/factorial(4, 1)), 0, (-1/factorial(6, 1)), 0, (1/factorial(8, 1)), 0, (-1/factorial(10, 1)), 0, (1/factorial(12, 1))};
 
 	// -- Coefficient matrices for each polynomial
-	Matrix p4coeff(3, 1, p4data);
-	Matrix p8coeff(5, 1, p8data);
-	Matrix p12coeff(7, 1, p12data);
+	Matrix p4coeff(5, 1, p4data);
+	Matrix p8coeff(9, 1, p8data);
+	Matrix p12coeff(13, 1, p12data);
 
 	// -- Matrix for polynomials, initialized to 0
 	Matrix p4(601, 1);
