@@ -5,8 +5,6 @@
 
 using namespace std;
 
-// f'(5) = (-2)*5^(-3) = -0.016
-
 int main() {
   // -- initialize matrices
   Matrix n = Linspace(0, 52, 53, 1);;
