@@ -5,6 +5,8 @@
 
 using namespace std;
 
+// f'(5) = (-2)*5^(-3) = -0.016
+
 int main() {
   // -- initialize matrices
   Matrix n = Linspace(0, 52, 53, 1);;
@@ -28,11 +30,12 @@ int main() {
   R.Write("R.txt");
 
   // -- find r
+  double fprime = -3 * pow(3, -4);
   for(int i = 0; i < r.Size(); i++) {
-    double x = 3 + h(i);
-    double denominator = pow(x, 3);
-    denominator *= h(i);
-    r(i) = .3333333 + (9/(denominator));
+    double f = (pow(3, -3) - pow(3-h(i), -3)) / h(i);
+    
+    // errors
+    r(i) = abs((fprime - f) / fprime);
   }
   r.Write("r_.txt");
 }
