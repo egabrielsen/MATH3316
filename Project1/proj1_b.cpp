@@ -25,7 +25,7 @@ int main() {
   double c1 = 0.00365;
   double c2 = (pow(3, -3) * pow(2, -52)) / (-3 * pow(3, -4));
   for(int i = 0; i < h.Size(); i++) {
-    R(i) = (c1 * h(i)) + (c2 / h(i));
+    R(i) = abs((c1 * h(i)) + (c2 / h(i)));
   }
   R.Write("R.txt");
 
