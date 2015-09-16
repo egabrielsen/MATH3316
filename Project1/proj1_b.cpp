@@ -35,5 +35,6 @@ int main() {
     // errors
     r(i) = abs((fprime - f) / fprime);
   }
-  r.Write("r_.txt");
+  r.Write("r_.txt"); //for some reason r.txt was overwriting R.txt hence the added space
+
 }
