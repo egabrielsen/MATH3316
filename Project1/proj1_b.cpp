@@ -22,10 +22,10 @@ int main() {
   h.Write("h.txt");
 
   // -- find R
-  double c1 = 0.666667;
-  double c2 = 1;
+  double c1 = 0.00365;
+  double c2 = (pow(3, -3) * pow(2, -52)) / (-3 * pow(3, -4));
   for(int i = 0; i < h.Size(); i++) {
-    R(i) = (c1 * h(i)) + (1 / h(i));
+    R(i) = (c1 * h(i)) + (c2 / h(i));
   }
   R.Write("R.txt");
 
