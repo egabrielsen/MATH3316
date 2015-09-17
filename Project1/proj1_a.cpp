@@ -31,8 +31,7 @@ int main() {
 	Matrix err8(601, 1);
 	Matrix err12(601, 1);
 
-	//-- Creating cos(x)
-	// -- Creating p4
+	// -- Creating f, p4, p8, p12, err4, err8, err12
 	for(int i = 0; i < z.Size(); i++) {
 		f(i) = cos(z(i));
 		p4(i) = nest(p4coeff, z(i));
@@ -42,33 +41,14 @@ int main() {
 		err8(i) = abs(f(i) - p8(i));
 		err12(i) = abs(f(i) - p12(i));
 	}
+	
+	// -- Writing Out files
+	f.Write("f.txt");
 	p4.Write("p4.txt");
-
-	// -- Creating p8
-	// for(int i = 0; i < z.Size(); i++) {
-	// 	p8(i) = nest(p8coeff, z(i));
-	// }
 	p8.Write("p8.txt");
-
-	// -- Creating p12
-	// for(int i = 0; i < z.Size(); i++) {
-	// 	p12(i) = nest(p12coeff, z(i));
-	// }
 	p12.Write("p12.txt");
-
-	// for(int i = 0; i < f.Size(); i++) {
-	// 	err4(i) = abs(f(i) - p4(i));
-	// }
 	err4.Write("err4.txt");
-
-	// for(int i = 0; i < f.Size(); i++) {
-	// 	err8(i) = abs(f(i) - p8(i));
-	// }
 	err8.Write("err8.txt");
-
-	// for(int i = 0; i < f.Size(); i++) {
-	// 	err12(i) = abs(f(i) - p12(i));
-	// }
 	err12.Write("err12.txt");
 
 	return 0;
