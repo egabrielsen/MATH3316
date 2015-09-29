@@ -1,3 +1,8 @@
+/* 	Erik Gabrielsen
+		Math 3316
+		Project 1 Part A: Taylor Series */
+		
+
 #include <iostream>
 #include <vector>
 #include <cmath>
