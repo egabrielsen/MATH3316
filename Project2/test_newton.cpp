@@ -1,6 +1,10 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include <iostream>
-#include "newton.cpp"
+#include <iomanip>
+#include <math.h>
 #include "fcn.hpp"
+#include "newton.cpp"
 
 using namespace std;
 
