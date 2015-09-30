@@ -6,22 +6,25 @@
 
  double newton(Fcn& f, Fcn& df, double x, int maxit, double tol, bool show_iterates) {
    cout << "guess " << x << " tol: " << tol << endl;
-   double residual = x;
-   double previous = x;
-   for(int i = 0; i < maxit; i++) {
-     previous = residual;
-     residual = residual - f(residual)/df(residual);
-     double solutionUpdate = abs(residual - previous);
+   int iteration = 0;
+   double solutionUpdate = 10;
+
+   // -- go to max iterations or until solution update is less than the tolerance
+   while(iteration <= maxit && solutionUpdate > tol) {
+     iteration++;
+     double previous = x;
+
+     // -- x = x(n+1) by (x - f(x)/f'(x))
+     x = x - (f(x)/df(x));
+
+     // -- solution update = |x(n+1) - x|
+     solutionUpdate = abs(x - previous);
+
      if (show_iterates) {
-       /* At each iteration, if show iterates is “true” have your
-          method output the current iteration index, the current solution guess, x, the absolute value of
-          the solution update, |h|, and the absolute value of the current residual, |f(x)|. */
-          cout << "iter " << i << "; guess " << residual << "; solution update " << solutionUpdate << "; residual: " << abs(f(residual)) << endl;
-     }
-     if (solutionUpdate <= tol) {
-       break;
+       //-- output the iteration, guess, solution update and residual for each iteration
+       cout << "iter " << iteration << "; guess " << x << "; solution update " << solutionUpdate << "; residual: " << abs(f(x)) << endl;
      }
    }
    cout << endl;
-   return residual;
+   return x;
  }

@@ -8,27 +8,42 @@
 
 using namespace std;
 
+// -- f(x)
 class fcn : public Fcn {
 public:
-  double operator()(double x) {   // function evaluation
+  double operator()(double x) {
     return x * (x-3) * (x+1);
   }
 };
 
+// -- f'(x)
+class fdx : public Fcn {
+public:
+  double operator()(double x) {
+    return ((3*x*x) - 4*x - 3);
+  }
+};
+
 int main(int argc, char* argv[]) {
-    int guesses[3] = { -2, 1, 2 };
+    double guesses[3] = { -2, 1, 2 };
     double tols[3] = { 10e-1, 10e-5, 10e-9 };
+    double ans[9];
     int maxit = 15;
 
     fcn f;
-    fcn df;
+    fdx df;
 
     for(unsigned int i = 0; i < 3; i++) {
         for(unsigned int j = 0; j < 3; j++) {
-            int guess = guesses[i];
+            double guess = guesses[i];
             double tol = tols[j];
             double res = newton(f, df, guess, maxit, tol, true);
+            ans[(3*i) + j] = res;
         }
+    }
+
+    for (int i =0; i < 9; i++) {
+      cout << "ANS-> " << ans[i] << endl;
     }
     return 0;
 }
