@@ -17,7 +17,7 @@ public:
 };
 
 int main(int argc, char* argv[]) {
-    double alpha[3] = { pow(2.0, -2), pow(2.0, -26), pow(2.0, -50) };
+    double alpha[3] = { pow(2.0, -4), pow(2.0, -26), pow(2.0, -50) };
     double guess[3] = { -2, 1, 2 };
     double tols[3] = { 1e-1, 1e-5, 1e-9 };
     double ans[27];
