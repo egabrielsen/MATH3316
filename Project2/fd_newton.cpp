@@ -4,23 +4,27 @@
 using namespace std;
 
 double fd_newton(Fcn& f, double x, int maxit, double tol, double alpha, bool show_iterates) {
-  cout << "guess " << x << " tol: " << tol << endl;
-  double residual = x;
-  double previous = x;
-  for(int i = 0; i < maxit; i++) {
-    previous = residual;
-    residual = residual - f(residual)/df(residual);
-    double solutionUpdate = abs(residual - previous);
+  cout << "guess " << x << " tol: " << tol << " alpha: " << alpha << endl;
+  int iteration = 0;
+  double solutionUpdate = 10;
+
+  // -- go to max iterations or until solution update is less than the tolerance
+  while(iteration <= maxit && solutionUpdate > tol) {
+    iteration++;
+    double previous = x;
+
+    double dpF = (f(x + alpha) - f(x)) / alpha;
+    // -- x = x(n+1) by (x - f(x)/f'(x))
+    x = x - (f(x)/dpF);
+
+    // -- solution update = |x(n+1) - x|
+    solutionUpdate = fabs(x - previous);
+
     if (show_iterates) {
-      /* At each iteration, if show iterates is “true” have your
-         method output the current iteration index, the current solution guess, x, the absolute value of
-         the solution update, |h|, and the absolute value of the current residual, |f(x)|. */
-         cout << "iter " << i << "; guess " << residual << "; solution update " << solutionUpdate << "; residual: " << abs(f(residual)) << endl;
-    }
-    if (solutionUpdate <= tol) {
-      break;
+      //-- output the iteration, guess, solution update and residual for each iteration
+      cout << "iter " << iteration << ", x = " << x << ", |h| = " << solutionUpdate << "; |f(x)| =  " << fabs(f(x)) << endl;
     }
   }
   cout << endl;
-  return residual;
+  return x;
 }

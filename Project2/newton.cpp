@@ -18,11 +18,11 @@
      x = x - (f(x)/df(x));
 
      // -- solution update = |x(n+1) - x|
-     solutionUpdate = abs(x - previous);
+     solutionUpdate = fabs(x - previous);
 
      if (show_iterates) {
        //-- output the iteration, guess, solution update and residual for each iteration
-       cout << "iter " << iteration << "; guess " << x << "; solution update " << solutionUpdate << "; residual: " << abs(f(x)) << endl;
+       cout << "iter " << iteration << "; guess " << x << "; solution update " << solutionUpdate << "; residual: " << fabs(f(x)) << endl;
      }
    }
    cout << endl;

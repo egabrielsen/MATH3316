@@ -32,13 +32,15 @@ int main(int argc, char* argv[]) {
 
     fcn f;
     fdx df;
+    int index = 0;
 
     for(unsigned int i = 0; i < 3; i++) {
         for(unsigned int j = 0; j < 3; j++) {
             double guess = guesses[i];
             double tol = tols[j];
-            double res = newton(f, df, guess, maxit, tol, true);
-            ans[(3*i) + j] = res;
+            ans[index] = newton(f, df, guess, maxit, tol, true);
+            cout << "The Approximate Root is --->  " << ans[index] << "\n" << endl;
+            index++;
         }
     }
 
