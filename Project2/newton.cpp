@@ -5,7 +5,11 @@
  using namespace std;
 
  double newton(Fcn& f, Fcn& df, double x, int maxit, double tol, bool show_iterates) {
-   cout << "guess " << x << " tol: " << tol << endl;
+   if (show_iterates) {
+     cout << endl;
+     cout << "guess " << x << " tol: " << tol << endl;
+   }
+
    int iteration = 0;
    double solutionUpdate = 10;
 
@@ -25,6 +29,5 @@
        cout << "iter " << iteration << "; guess " << x << "; solution update " << solutionUpdate << "; residual: " << fabs(f(x)) << endl;
      }
    }
-   cout << endl;
    return x;
  }
