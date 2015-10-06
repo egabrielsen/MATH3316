@@ -7,18 +7,24 @@
 using namespace std;
 
 class fcn : public Fcn {
+private:
+  double eps = sqrt(1 - (pow(1.25, 2) / pow(2.0, 2)));
+  double t = 0;
 public:
   double operator()(double x) {
-    double eps = 0.780624749;
-    return eps * sin(x) - x;
+    return eps * sin(x) - x - t;
+  }
+  void setTime(double x) {
+    t = x;
   }
 };
 
 // -- f'(x)
 class fdx : public Fcn {
+private:
+  double eps = sqrt(1 - (pow(1.25, 2) / pow(2.0, 2)));
 public:
   double operator()(double x) {
-    double eps = 0.780624749;
     return eps * cos(x) - 1;
   }
 };
@@ -32,10 +38,6 @@ public:
 
 
 int main(int argc, char* argv[]) {
-  double a = 2.0;
-  double b = 1.25;
-  // epsilon =
-  double epsilon = sqrt(1 - (pow(a, 2) / pow(b, 2)));
   Matrix t = Linspace(0, 10, 10001);
   t.Write("t.txt");
   Matrix w = Matrix(10001);
@@ -46,18 +48,19 @@ int main(int argc, char* argv[]) {
   fdx df;
   fr r;
 
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < 10001; i++) {
     double guess;
     if (i == 0) {
       guess = 0;
     } else {
       guess = w(i - 1);
     }
-    w(i) = newton(f, df, guess, 6, 1e-5, true);
+    f.setTime(t(i));
+    w(i) = newton(f, df, guess, 6, 1e-5, false);
     x(i) = r(w(i))*cos(w(i));
     y(i) = r(w(i))*sin(w(i));
   }
-  w.Write("t.txt");
+  w.Write("w.txt");
   x.Write("x.txt");
   y.Write("y.txt");
 

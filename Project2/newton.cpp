@@ -20,7 +20,7 @@
 
      // -- x = x(n+1) by (x - f(x)/f'(x))
      x = x - (f(x)/df(x));
-
+  
      // -- solution update = |x(n+1) - x|
      solutionUpdate = fabs(x - previous);
 
