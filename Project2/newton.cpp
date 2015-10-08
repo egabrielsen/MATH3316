@@ -7,6 +7,7 @@
  double newton(Fcn& f, Fcn& df, double x, int maxit, double tol, bool show_iterates) {
    if (show_iterates) {
      cout << endl;
+     // -- show the initial guesses
      cout << "guess " << x << " tol: " << tol << endl;
    }
 
@@ -20,7 +21,7 @@
 
      // -- x = x(n+1) by (x - f(x)/f'(x))
      x = x - (f(x)/df(x));
-  
+
      // -- solution update = |x(n+1) - x|
      solutionUpdate = fabs(x - previous);
 

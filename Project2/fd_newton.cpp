@@ -8,13 +8,15 @@ double fd_newton(Fcn& f, double x, int maxit, double tol, double alpha, bool sho
   int iteration = 0;
   double solutionUpdate = 10;
 
-  // -- go to max iterations or until solution update is less than the tolerance
+  // -- while loop till max iterations or until solution update is less than the tolerance
   while(iteration <= maxit && solutionUpdate > tol) {
     iteration++;
     double previous = x;
 
+    // --  dpF which is an approximation of the derivative.
     double dpF = (f(x + alpha) - f(x)) / alpha;
-    // -- x = x(n+1) by (x - f(x)/f'(x))
+    
+    // -- x = x(n+1) by (x - f(x)/dpF(x))
     x = x - (f(x)/dpF);
 
     // -- solution update = |x(n+1) - x|
