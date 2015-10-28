@@ -28,8 +28,7 @@ Matrix Newton_coefficients(Matrix& x, Matrix& y) {
 }
 
 double Newton_evaluate(Matrix& x, Matrix& c, double z) {
-  int n = c.Size() - 1;
-  double temp = c(n);
+  int n = c.Size();
   double total = 0;
   for (int i = 0; i < n; i++) {
     double product = 1;
