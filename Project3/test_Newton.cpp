@@ -44,8 +44,8 @@
           p(i) = Newton_evaluate(x, c, z(i));
       }
 
-      std::cout << "interpolant/error w/ " << n+1 << " nodes: " << std::endl;
-      std::cout << "    z        f(z)               p(z)              error" << std::endl;
+      cout << "interpolant/error w/ " << n+1 << " nodes: " << endl;
+      cout << "    z        f(z)               p(z)              error" << endl;
       for(int i = 0; i < n; i++) {
           printf("   %6.3f   %16.13f   %16.13f   %7.2g\n", z(i), f(z(i)), p(i), fabs(f(z(i)) - p(i)));
       }
