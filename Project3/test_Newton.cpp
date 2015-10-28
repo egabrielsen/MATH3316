@@ -26,7 +26,7 @@
     vector<size_t> nvals = {10, 20};
     for (size_t k=0; k<nvals.size(); k++) {
       int n = nvals[k];
-      cout << endl << "interpolants and errors using " << n+1 << " nodes:\n";
+      cout << endl << "interpolants and errors using " << n << " nodes:\n";
 
       Matrix x = Linspace(0.0, 1.0, n+1, 1);
       Matrix y(n+1);
@@ -44,7 +44,7 @@
           p(i) = Newton_evaluate(x, c, z(i));
       }
 
-      cout << "interpolant/error w/ " << n+1 << " nodes: " << endl;
+      cout << endl;
       cout << "    z        f(z)               p(z)              error" << endl;
       for(int i = 0; i < n; i++) {
           printf("   %6.3f   %16.13f   %16.13f   %7.2g\n", z(i), f(z(i)), p(i), fabs(f(z(i)) - p(i)));
