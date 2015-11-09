@@ -1,8 +1,6 @@
 /* Erik Gabrielsen
    MATH 3316
    Program 3 */
-
-   // Inclusions
    #include <stdlib.h>
    #include <stdio.h>
    #include <iostream>
@@ -20,7 +18,7 @@
    }
 
 
-   // This routine tests the function lagrange.cpp
+   // This routine tests the function newton_interpolant.cpp
   int main(int argc, char* argv[]) {
 
     vector<size_t> nvals = {10, 20};

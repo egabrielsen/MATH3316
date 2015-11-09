@@ -1,10 +1,10 @@
 ###################################################################
 #  Makefile for project 3
 #
-#  Daniel R. Reynolds
+#  Erik Gabrielsen
 #  SMU Mathematics
 #  Math 3316
-#  28 September 2015
+#  8 November 2015
 ###################################################################
 
 # compiler & flags

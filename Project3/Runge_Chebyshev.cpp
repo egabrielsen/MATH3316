@@ -18,7 +18,7 @@ double chebNode(double n, double i, double m) {
     return n*std::cos((2*i + 1) * M_PI / (2*m + 2));
 }
 
-// used to reuse code for 8 and 16 nodes
+// used to reuse code for 6 and 24 nodes
 void computeWithNodes(unsigned int n, unsigned int m, std::string filename) {
     Matrix x(m+1);
     Matrix y(n+1);
@@ -53,8 +53,8 @@ void computeWithNodes(unsigned int n, unsigned int m, std::string filename) {
 }
 
 int main() {
-    computeWithNodes(6, 6, "p8_cheb.txt");
-    computeWithNodes(24, 24, "p16_cheb.txt");
+    computeWithNodes(6, 6, "p6_Cheb.txt");
+    computeWithNodes(24, 24, "p24_Cheb.txt");
 
     return 0;
 }

@@ -39,8 +39,8 @@ void computeWithNodes(unsigned int n, unsigned int m, std::string filename) {
 }
 
 int main() {
-    computeWithNodes(6, 6, "p6_reg.txt");
-    computeWithNodes(24, 24, "p24_reg.txt");
+    computeWithNodes(6, 6, "p6_uni.txt");
+    computeWithNodes(24, 24, "p24_uni.txt");
 
     Matrix avals = Linspace(-4, 4, 101);
     Matrix bvals = Linspace(-4, 4, 201);
@@ -53,6 +53,6 @@ int main() {
         }
     }
 
-    runge.Write("runge.txt");
+    runge.Write("Runge.txt");
     return 0;
 }

@@ -27,7 +27,7 @@ void test_newton(int n, int m, Matrix& x, Matrix& y, Matrix& z) {
 void test_lagrange(int n, int m, Matrix& x, Matrix& y, Matrix& z) {
   Matrix p(m);
   for (int i = 0; i < m; i++) {
-    Lagrange(x, y, z(i));
+    p(i) = Lagrange(x, y, z(i));
   }
 }
 
@@ -36,6 +36,7 @@ double f(double x) {
 }
 
 int main() {
+  // values of n and m to use for testing.
   int n_tests[4] = {10, 20, 40, 80};
   int m_tests[4] = {100, 1000, 10000, 100000};
 
@@ -53,11 +54,13 @@ int main() {
 
       chrono::time_point<std::chrono::system_clock> start, end;
       start = chrono::system_clock::now();
+      // run Newton
       test_newton(n, m, x, y, z);
       end = chrono::system_clock::now();
       double newton_time = chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
 
       start = chrono::system_clock::now();
+      // run Lagrange
       test_lagrange(n, m, x, y, z);
       end = chrono::system_clock::now();
       double lagrange_time = chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
