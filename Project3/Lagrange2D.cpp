@@ -14,6 +14,7 @@ double Lagrange2D(Matrix& x, Matrix& y, Matrix& f, double a, double b) {
   double total = 0;
   for (int i = 0; i < x.Size(); i++) {
     for (int j = 0; j < y.Size(); j++) {
+      // basis for x, a and y, b
       total += f(i, j) * Lagrange_basis(x, i, a) * Lagrange_basis(y, j, b);
     }
   }

@@ -25,13 +25,14 @@ void test_newton(int n, int m, Matrix& x, Matrix& y, Matrix& z) {
 }
 
 void test_lagrange(int n, int m, Matrix& x, Matrix& y, Matrix& z) {
-  Matrix p(m);
+  Matrix p(m); // results of interpolation
   for (int i = 0; i < m; i++) {
     p(i) = Lagrange(x, y, z(i));
   }
 }
 
 double f(double x) {
+  // function that is being interpolated
   return (cosh(x*x/3));
 }
 
@@ -40,11 +41,13 @@ int main() {
   int n_tests[4] = {10, 20, 40, 80};
   int m_tests[4] = {100, 1000, 10000, 100000};
 
+  // 16 total tests
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
       int n = n_tests[i];
       int m = m_tests[j];
 
+      // on the interval [-2, 2]
       Matrix x = Linspace(-2, 2, n+1);
       Matrix y(n+1);
       for (int k = 0; k < n+1; k++) {
