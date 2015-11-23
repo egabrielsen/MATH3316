@@ -21,7 +21,7 @@ double Lagrange(Matrix& x, Matrix& y, double z);
 int main(int argc, char* argv[]) {
 
   // simple Lambda function for f(x)
-  auto f = [](const double x) -> double { 
+  auto f = [](const double x) -> double {
     return (cosh(2.0*x*x));
   };
 
@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
   for (size_t k=0; k<nvals.size(); k++) {
 
     // set n, output test information
-    int n = nvals[k];    
+    int n = nvals[k];
     cout << endl << "interpolants and errors using " << n+1 << " nodes:\n";
 
     // set arrays of nodes and data values
@@ -44,16 +44,16 @@ int main(int argc, char* argv[]) {
     // set evaluation points z as midpoints between nodes
     double dx = 1.0/n;                   // set node spacing
     Matrix z = Linspace(dx/2.0, 1.0-dx/2.0, n, 1);
-  
+
     // evaluate the Lagrange polynomial at the points z, storing in p
     Matrix p(n);
-    for (int i=0; i<n; i++) 
+    for (int i=0; i<n; i++)
       p(i) = Lagrange(x, y, z(i));
 
     // output errors at each point
     cout << "      z        f(z)               p(z)             err\n";
-    for (int i=0; i<n; i++) 
-      printf("   %6.3f   %16.13f   %16.13f   %7.2g\n", 
+    for (int i=0; i<n; i++)
+      printf("   %6.3f   %16.13f   %16.13f   %7.2g\n",
 	     z(i), f(z(i)), p(i), fabs(f(z(i))-p(i)));
   }
 
