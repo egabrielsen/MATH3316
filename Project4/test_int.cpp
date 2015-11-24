@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
   cout << "\n Comp Int approximation:\n";
   cout << "     n             R(f)            relerr    conv rate\n";
   cout << "  ---------------------------------------------------\n";
-  vector<int> n = {20, 40, 80, 160, 320, 640, 1280, 2560, 5120, 10240};
+  vector<int> n = {20, 40, 60, 80, 100, 120, 140, 160, 180, 200};
   vector<double> errors(n.size());
   vector<double> hvals(n.size());
 
@@ -65,8 +65,7 @@ int main(int argc, char* argv[]) {
     if (i == 0)
       printf("  %22.16e  %7.1e     ----\n", Iapprox, errors[i]);
     else
-      printf("  %22.16e  %7.1e   %f\n", Iapprox, errors[i],
-	     (log(errors[i-1]) - log(errors[i]))/(log(hvals[i-1]) - log(hvals[i])));
+      printf("  %22.16e  %7.1e   %f\n", Iapprox, errors[i], (log(errors[i-1]) - log(errors[i]))/(log(hvals[i-1]) - log(hvals[i])));
 
   }
   cout << "  ---------------------------------------------------\n";
