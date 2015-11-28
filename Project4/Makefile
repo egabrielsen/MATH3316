@@ -23,7 +23,7 @@ test_int.exe: test_int.cpp composite_int.cpp
 test_adapt.exe: test_adapt.cpp adaptive_int.cpp composite_int.cpp
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-test_carbon.exe: test_carbon.cpp carbon.cpp adaptive_int.cpp composite_int.cpp
+test_carbon.exe: test_carbon.cpp carbon.cpp adaptive_int.cpp composite_int.cpp matrix.cpp
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 clean :
