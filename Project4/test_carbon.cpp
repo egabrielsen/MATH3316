@@ -15,8 +15,8 @@ const double atolerance = 1e-11;
 const double rtolerance = 1e-15;
 
 int main() {
-  Matrix K = Linspace(800, 1200, 401); // Kelvin
-  Matrix t = Linspace(1, 172800, 601); // temp to keep track of time 1s - 48 hours (172800 s)
+  Matrix K = Linspace(800, 1200, 400); // Kelvin
+  Matrix t = Linspace(1, 172800, 600); // temp to keep track of time 1s - 48 hours (172800 s)
   Matrix c2mm = Matrix(400, 600);
   Matrix c4mm = Matrix(400, 600);
   Matrix C2mm_800K = Matrix(600);
