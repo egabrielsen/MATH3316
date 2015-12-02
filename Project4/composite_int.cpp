@@ -9,6 +9,7 @@
 
 using namespace std;
 
+// -- optimal evaluation points for 4 node Gaussian numerical integration
 const double x1 = -0.8611363116; //to avoid calling the sqrt function
 const double x2 = -0.3399810436;
 const double x3 = 0.3399810436;
@@ -24,6 +25,8 @@ double composite_int(Fcn& f, const double a, const double b, const int n) {
   double total = 0;
 
   double xmid, node_1, node_2, node_3, node_4;
+
+  // calculating subintervals
   for (int i=0; i < n; i++) {
     xmid = a + (i+0.5)*h;
     node_1 = xmid + 0.5 * h * x1;

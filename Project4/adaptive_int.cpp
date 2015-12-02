@@ -23,7 +23,7 @@ int adaptive_int(Fcn& f, const double a, const double b, const double rtol, cons
         n = n + k; // increment n
         next = composite_int(f, a, b, n);
         k = n; // increase n by a proportion of itself
-    } while(std::abs(next-cur) >= (rtol*std::abs(next) + atol)); // compares error between iterations to desired accuracy
+    } while(fabs(next-cur) >= (fabs(next) + atol)); // compares error between iterations to desired accuracy
     R = next;
     return 0;
 }

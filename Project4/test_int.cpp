@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
   printf("\n True Integral = %22.16e\n", Itrue);
 
 
-  // test the Gauss-2 rule
+  // test the Gauss-4 rule
   cout << "\n Comp Int approximation:\n";
   cout << "     n             R(f)            relerr    conv rate\n";
   cout << "  ---------------------------------------------------\n";
