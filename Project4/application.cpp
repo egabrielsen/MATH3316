@@ -12,7 +12,6 @@ const double atolerance = 1e-15;
 const double rtolerance = 1e-14;
 const double depth = .003;
 const double t = 129600; // 36 hours
-const double accuracy = 0.0001; // accurate to the .0001 K
 
 double bisection(Fcn& f, double a, double b, int maxit, double tol, bool show_iterates);
 double carbon(const double x, const double t, const double T, const double rtol, const double atol);
@@ -26,8 +25,13 @@ public:
 
 int main() {
   fc f;
-  // cout << solver(300);
-  cout << bisection(f, 0, 1500, 100, 1e-6, true);
-  
+
+  // using bisection to solve for the roots of the above function.
+  // I chose the interval [800, 1100]
+  double temperature = bisection(f, 800, 1100, 100, 1e-6, true);
+
+  cout << "\nTemperature required to get carbon at a concentration of 0.006 at t = 36 hours with a depth of 3.0mm: " << endl;
+  cout << "\t" << temperature << " Kelvin" << endl;
+
   return 0;
 }

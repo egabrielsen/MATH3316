@@ -12,7 +12,7 @@ using namespace std;
 double composite_int(Fcn& f, const double a, const double b, const int n);
 
 int adaptive_int(Fcn& f, const double a, const double b, const double rtol, const double atol, double& R, int& n, int& Ntot) {
-    int k = 5; // initial value of k
+    int k = 4; // initial value of k
     n = 15; // initial value of n
     double cur, next;
     next = composite_int(f, a, b, n);
@@ -23,7 +23,7 @@ int adaptive_int(Fcn& f, const double a, const double b, const double rtol, cons
         n = n + k; // increment n
         next = composite_int(f, a, b, n);
         k = n; // increase n by a proportion of itself
-    } while(fabs(next-cur) >= (fabs(next) + atol)); // compares error between iterations to desired accuracy
+    } while(fabs(next-cur) >= (rtol*fabs(next) + atol)); // compares error between iterations to desired accuracy
     R = next;
     return 0;
 }

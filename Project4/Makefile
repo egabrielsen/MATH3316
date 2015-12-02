@@ -1,7 +1,7 @@
 ###################################################################
 #  Makefile for project 4
 #
-#  Daniel R. Reynolds
+#  Erik Gabrielsen
 #  SMU Mathematics
 #  Math 3316
 #  31 October 2015
@@ -26,7 +26,7 @@ test_adapt.exe: test_adapt.cpp adaptive_int.cpp composite_int.cpp
 test_carbon.exe: test_carbon.cpp carbon.cpp adaptive_int.cpp composite_int.cpp matrix.cpp
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-application.exe: application.cpp carbon.cpp bisection.cpp adaptive_int.cpp composite_int.cpp matrix.cpp 
+application.exe: application.cpp carbon.cpp bisection.cpp adaptive_int.cpp composite_int.cpp matrix.cpp
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 clean :
